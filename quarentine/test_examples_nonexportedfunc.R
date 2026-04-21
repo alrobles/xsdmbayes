@@ -13,7 +13,7 @@
 #' bio1_ts <- terra::unwrap(cmcc_cm_bio1)
 #' bio12_ts <- terra::unwrap(cmcc_cm_bio12)
 #' envData <- list(bio1 = bio1_ts, bio12 = bio1_ts)
-#' xsdm:::check_envdata_ext(envData)
+#' xsdmbayes:::check_envdata_ext(envData)
 #' }
 #' \dontrun{
 #' # Bioclimatic variable time series
@@ -32,7 +32,7 @@
 #' bio1_ts <- terra::unwrap(cmcc_cm_bio1)
 #' bio12_ts <- terra::unwrap(cmcc_cm_bio12)
 #' envData <- list(bio1 = bio1_ts, bio12 = bio1_ts)
-#' xsdm:::check_envdata_res(envData)
+#' xsdmbayes:::check_envdata_res(envData)
 #' }
 #' \dontrun{
 #' bio1_ts <- terra::unwrap(cmcc_cm_bio1)
@@ -41,7 +41,7 @@
 #' pts <- mus_virtualis
 #' pts <- rbind(pts, pts)
 #'
-#' xsdm:::new_xsdm(envData, occ = pts) |> xsdm:::validate_xsdm()
+#' xsdmbayes:::new_xsdmbayes(envData, occ = pts) |> xsdmbayes:::validate_xsdmbayes()
 #' }
 #' @examples
 #' \dontrun{
@@ -63,7 +63,7 @@
 #' pr <- pr[[1:20]]
 #' bio12_ts <- bio12_ts[[1:29]]
 #' envData <- list(bio1 = bio1_ts, bio_12 = bio12_ts)
-#' xsdmTest:::check_envdata_timestep_consistency(envData)
+#' xsdmbayesTest:::check_envdata_timestep_consistency(envData)
 #'}
 #'#' @examples
 #' \dontrun{
@@ -145,5 +145,5 @@
 #' envData <- list(bio1 = bio1_ts, bio12 = bio1_ts)
 #' #Virtual species presence/absence points
 #' pts <- mus_virtualis
-#' new_xsdm(envData, occ = pts)
+#' new_xsdmbayes(envData, occ = pts)
 #' }

@@ -1,9 +1,9 @@
 # .onLoad <- function(libname, pkgname)
 # {
-#   library.dynam("xsdm", pkgname, libname)
+#   library.dynam("xsdmbayes", pkgname, libname)
 # }
 
-xsdmStartupMessage <- function()
+xsdmbayesStartupMessage <- function()
 {
   msg <- c(paste0(
     "              _
@@ -11,8 +11,8 @@ __  _____  __| |_ __ ___
 \\ \\/ / __|/ _` | '_ ` _ \\
  >  <\\__ \\ (_| | | | | | |
 /_/\\_\\___/\\__,_|_| |_| |_|    version ",
-    utils::packageVersion("xsdm")),
-    "\nType 'citation(\"xsdm\")' for citing this R package in publications.\n",
+    utils::packageVersion("xsdmbayes")),
+    "\nType 'citation(\"xsdmbayes\")' for citing this R package in publications.\n",
     "\nThis package depends on cmdstanr that is not in CRAN\n"
     )
 
@@ -21,16 +21,16 @@ __  _____  __| |_ __ ___
 
 .onAttach <- function(lib, pkg)
 {
-  # unlock .xsdm variable allowing its modification
-  unlockBinding("xsdm", asNamespace("xsdm"))
+  # unlock .xsdmbayes variable allowing its modification
+  unlockBinding("xsdmbayes", asNamespace("xsdmbayes"))
   # startup message
-  msg <- xsdmStartupMessage()
+  msg <- xsdmbayesStartupMessage()
   if(!interactive())
-    msg[1] <- paste("Package 'xsdm' version", utils::packageVersion("xsdm"))
+    msg[1] <- paste("Package 'xsdmbayes' version", utils::packageVersion("xsdmbayes"))
   packageStartupMessage(msg)
   invisible()
 
 }
 .onUnload <- function(libpath) {
-  library.dynam.unload("xsdm", libpath)
+  library.dynam.unload("xsdmbayes", libpath)
 }

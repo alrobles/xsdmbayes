@@ -2,30 +2,30 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 .invLogit <- function(input, param1, param2) {
-    .Call(`_xsdm_inverse_logit`, input, param1, param2)
+    .Call(`_xsdmbayes_inverse_logit`, input, param1, param2)
 }
 
 .bernoulli_lpmf <- function(x, y) {
-    .Call(`_xsdm_bernoulli_lpmf`, x, y)
+    .Call(`_xsdmbayes_bernoulli_lpmf`, x, y)
 }
 
 .meanRow <- function(mat) {
-    .Call(`_xsdm_meanRow`, mat)
+    .Call(`_xsdmbayes_meanRow`, mat)
 }
 
 .parallelVectorSum <- function(x) {
-    .Call(`_xsdm_parallelVectorSum`, x)
+    .Call(`_xsdmbayes_parallelVectorSum`, x)
 }
 
 .response <- function(x, param1, param2, param3) {
-    .Call(`_xsdm_response`, x, param1, param2, param3)
+    .Call(`_xsdmbayes_response`, x, param1, param2, param3)
 }
 
 .response_halfsquare <- function(x) {
-    .Call(`_xsdm_response_halfsquare`, x)
+    .Call(`_xsdmbayes_response_halfsquare`, x)
 }
 
 .response_multi <- function(x, sigl, sigr) {
-    .Call(`_xsdm_response_multi`, x, sigl, sigr)
+    .Call(`_xsdmbayes_response_multi`, x, sigl, sigr)
 }
 

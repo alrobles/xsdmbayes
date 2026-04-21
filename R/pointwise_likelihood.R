@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param object An xsdm object
+#' @param object An xsdmbayes object
 #' @param index An integer ginving the row index from the sample
 #' of the posterior. Default 1
 #' @param scale Logical. Should be environmental scaled?
@@ -9,8 +9,8 @@
 #' to weight the environmental data provided to predict
 #' @param ... pass arguments
 #' @return A raster map
-#' @method predict xsdm
-#' @aliases predict.xsdm
+#' @method predict xsdmbayes
+#' @aliases predict.xsdmbayes
 #'
 #' @examples
 #' bio1_ts <- terra::unwrap(cmcc_cm_bio1)
@@ -18,8 +18,8 @@
 #' envData <- list(bio1 = bio1_ts, bio12 = bio12_ts)
 #' pts <- mus_virtualis
 #' if (instantiate::stan_cmdstan_exists()) {
-#' mod <- xsdm(envData, occ = pts, fit = TRUE, iter_warmup = 1000, iter_sampling = 1000, parallel_chains = 4, threads_per_chain = 5, recompile = TRUE )
-#' model_draws <- xsdm:::pointwise_likelihood(mod)
+#' mod <- xsdmbayes(envData, occ = pts, fit = TRUE, iter_warmup = 1000, iter_sampling = 1000, parallel_chains = 4, threads_per_chain = 5, recompile = TRUE )
+#' model_draws <- xsdmbayes:::pointwise_likelihood(mod)
 #' loo::loo(model_draws)
 #' }
 

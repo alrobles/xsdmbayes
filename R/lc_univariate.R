@@ -12,7 +12,7 @@
 lc_univariate <- function() {
   model <- instantiate::stan_package_model(
     name = "lewontin_cohen_univariate",
-    package = "xsdm"
+    package = "xsdmbayes"
   )
   return(model)
 }

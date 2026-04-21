@@ -1,17 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# xsdm
+# xsdmbayes
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-xsdm: A demographic approach to species distribution model
+xsdmbayes: A demographic approach to species distribution model
 
 ## Installation
 
-`xsdm` relies on cmdstanr package. Please install first this package tha
+`xsdmbayes` relies on cmdstanr package. Please install first this package tha
 is not in cran with the following code:
 
 ``` r
@@ -24,34 +24,34 @@ Following this you need to install cmdstan
 cmdstanr::install_cmdstan()
 ```
 
-After this, you can install the development version of xsdm from
-[GitHub](https://github.com/alrobles/xsdm/) with:
+After this, you can install the development version of xsdmbayes from
+[GitHub](https://github.com/alrobles/xsdmbayes/) with:
 
 ``` r
-remotes::install_github("alrobles/xsdm")
+remotes::install_github("alrobles/xsdmbayes")
 ```
 
 ## Quick Start
 
 We provide here a basic example to get a species distribution model
-(SDM) using `xsdm`.
+(SDM) using `xsdmbayes`.
 
 ### First step
 
 The first step is to create a list with the raster stack of
 environmental time series of variables. These example rasters are
-packaged for distribution with the `xsdm` package. We use the
+packaged for distribution with the `xsdmbayes` package. We use the
 `terra::rast` function to convert a data frame in a time series raster.
 
 ``` r
-library(xsdm)
-#> Package 'xsdm' version 0.2.1
-#> Type 'citation("xsdm")' for citing this R package in publications.
+library(xsdmbayes)
+#> Package 'xsdmbayes' version 0.2.1
+#> Type 'citation("xsdmbayes")' for citing this R package in publications.
 #> 
 #> This package depends on cmdstanr that is not in CRAN
 library(terra)
 #> terra 1.8.54
-bio1 <- xsdm::bio1_df 
+bio1 <- xsdmbayes::bio1_df 
 bio1 <- terra::rast(bio1)
 ```
 
@@ -79,7 +79,7 @@ The next step is to set a `data.frame` with presence points of a species
 of interest you want to model.
 
 ``` r
-occ <- xsdm::mus_virtualis
+occ <- xsdmbayes::mus_virtualis
 ```
 
 In this example we provide a virtual species. Later we will show how to
@@ -92,17 +92,17 @@ be a table with 4 columns with the following structure:
 - *presence*: Presence or absence value
 
 Disclaimer: We provided limited documentation in how to download and
-clean data, however the main focus of `xsdm` is the modeling of species
+clean data, however the main focus of `xsdmbayes` is the modeling of species
 distribution. From the design philosophy of the package, it is the
 user’s responsibility to provide correct input data.
 
 ### Fourth step
 
 Get our very own first model is pretty straight foward using the
-function `xsdm`:
+function `xsdmbayes`:
 
 ``` r
-model <- xsdm(envData, occ)
+model <- xsdmbayes(envData, occ)
 #> Running MCMC with 4 sequential chains...
 #> 
 #> Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
@@ -205,12 +205,12 @@ model <- xsdm(envData, occ)
 #> See https://mc-stan.org/misc/warnings for details.
 ```
 
-In the design of xsdm we simplify the use with a main `xsdm` function.
+In the design of xsdmbayes we simplify the use with a main `xsdmbayes` function.
 Innerlly this function controls the model flow.
 
-## What is xsdm
+## What is xsdmbayes
 
-`xsdm` integrates concepts of stochastic demography into species
+`xsdmbayes` integrates concepts of stochastic demography into species
 distribution modelling. Inferences, utilizing Bayesian methods based in
 ‘Stan’, are made of aspects of the environmental niche of a species, and
 those inferences can be used to project species geographic range. See
@@ -220,10 +220,10 @@ of the statistical and demographic models used.
 ## Virtual species
 
 In order to follow with more examples we provide an auxiliary data
-package with examples to show the xsdm funcionalities.
+package with examples to show the xsdmbayes funcionalities.
 
 ``` r
-install.packages("xsdmexamples", repos="https://alrobles.github.io/drat/")
+install.packages("xsdmbayesexamples", repos="https://alrobles.github.io/drat/")
 ```
 
 Then we create a raster list with two environmental variables. This
@@ -232,7 +232,7 @@ of spatial resolution.
 
 ``` r
 
-library(xsdmexamples)
+library(xsdmbayesexamples)
 library(terra)
 bio1 <- terra::rast(bio1_df_NM)
 bio12 <- terra::rast(bio12_df_NM)
@@ -243,7 +243,7 @@ envData <- list(bio1 = bio1, bio12 = bio12)
 We are going to create a virtual species with the function `vsp`.
 
 ``` r
-library(xsdm)
+library(xsdmbayes)
 virt_rast <- vsp(env_data = envData, 
                  param.list = list(mu = c(8, 700), 
                                 sigl = c(1, 100),
@@ -275,11 +275,11 @@ df_presence$presence <- rbinom(nrow(df_presence),
                                prob = df_presence$probs)
 ```
 
-Let’s run a model to test that `xsdm` can retrieve the parameters we
+Let’s run a model to test that `xsdmbayes` can retrieve the parameters we
 created the virtual species with.
 
 ``` r
-model <- xsdm(envData, df_presence,
+model <- xsdmbayes(envData, df_presence,
               recompile = TRUE,
               max_treedepth = 10,
               adapt_delta = 0.8,

@@ -6,7 +6,7 @@ testthat::test_that("errors",{
 
 
   testthat::expect_error(
-    xsdm(bio1_ts, occ = pts)
+    xsdmbayes(bio1_ts, occ = pts)
   )
 #
 #   bio1_ts <- terra::unwrap(cmcc_cm_bio1)
@@ -15,7 +15,7 @@ testthat::test_that("errors",{
 #   pts <- rbind(pts,pts)
 #
 #    testthat::expect_error(
-#     xsdm(envData, occ = pts),
+#     xsdmbayes(envData, occ = pts),
 #     regexp = "points are duplicated"
 #   )
 

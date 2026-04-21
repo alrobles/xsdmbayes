@@ -2,20 +2,20 @@
 % Please edit documentation in R/loo.R
 \name{loo}
 \alias{loo}
-\title{Get loo from xsdm model}
+\title{Get loo from xsdmbayes model}
 \usage{
-loo(xsdm_object, index = 1, ...)
+loo(xsdmbayes_object, index = 1, ...)
 }
 \arguments{
-\item{xsdm_object}{an xsdm object created with constuctor and validated}
+\item{xsdmbayes_object}{an xsdmbayes object created with constuctor and validated}
 
 \item{index}{An integer ginving the row index from the sample}
 
 \item{...}{argument passed to stan model sampling}
 }
 \value{
-a fitted xsdm object
+a fitted xsdmbayes object
 }
 \description{
-Get loo from xsdm model
+Get loo from xsdmbayes model
 }
