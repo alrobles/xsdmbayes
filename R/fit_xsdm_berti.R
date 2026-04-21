@@ -1,6 +1,6 @@
-#' Fit an xsdm model
+#' Fit an xsdmbayes model
 #'
-#' @param xsdm_object an xsdm object created with constuctor and validated
+#' @param xsdmbayes_object an xsdmbayes object created with constuctor and validated
 #' @param fit String. Default is TRUE. Calculate parameters either by sampling,
 #' optimization or Laplace methods. Calculate the mle estimation (default) or
 #' Maximum a posteriori estimation (need to pass jacobian = TRUE  argument).
@@ -16,9 +16,9 @@
 #' @param compile_standalone Default TRUE. It is useful to export
 #' loglik functions
 #'
-#' @return a fitted xsdm object
+#' @return a fitted xsdmbayes object
 #'
-fit_xsdm_berti <- function(xsdm_object,
+fit_xsdmbayes_berti <- function(xsdmbayes_object,
                      fit = NULL,
                      recompile = FALSE,
                      normalize = FALSE,
@@ -33,7 +33,7 @@ fit_xsdm_berti <- function(xsdm_object,
                      compile_standalone = FALSE,
 
                      ...){
-  values  <- unclass(xsdm_object)
+  values  <- unclass(xsdmbayes_object)
 
 
   ### needs to add a function that computes this externally and can
@@ -96,7 +96,7 @@ fit_xsdm_berti <- function(xsdm_object,
 
     model <- instantiate::stan_package_model(
       name = "lewontin_cohen_univariate",
-      package = "xsdm"
+      package = "xsdmbayes"
     )
 
     if(is.null(nchains)){
@@ -203,7 +203,7 @@ fit_xsdm_berti <- function(xsdm_object,
 
     model <- instantiate::stan_package_model(
       name = "lewontin_cohen_multivariate_berti",
-      package = "xsdm"
+      package = "xsdmbayes"
     )
   }
 
@@ -234,9 +234,9 @@ fit_xsdm_berti <- function(xsdm_object,
   } else {
     stan_model <- model$sample(stan_data, init = init, chains = nchains,...)
   }
-  xsdm <- new_xsdm(env_data = values$env_data,
+  xsdmbayes <- new_xsdmbayes(env_data = values$env_data,
                    occ = values$occ,
                    stan_model = stan_model)
 
-  return(xsdm)
+  return(xsdmbayes)
 }

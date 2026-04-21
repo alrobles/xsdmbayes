@@ -10,7 +10,7 @@
 lc_multivariate <- function() {
   model <- instantiate::stan_package_model(
     name = "lewontin_cohen_multivariate",
-    package = "xsdm"
+    package = "xsdmbayes"
   )
   return(model)
 }

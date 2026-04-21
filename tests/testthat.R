@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(xsdm)
+library(xsdmbayes)
 
-test_check("xsdm")
+test_check("xsdmbayes")

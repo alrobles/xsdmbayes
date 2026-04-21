@@ -12,8 +12,8 @@
 #' @examples
 #' if (instantiate::stan_cmdstan_exists()) {
 #'  occ <- mus_virtualis
-#'  bio1_ts <- terra::unwrap(xsdm::cmcc_cm_bio1)
-#'  bio12_ts <- terra::unwrap(xsdm::cmcc_cm_bio12)
+#'  bio1_ts <- terra::unwrap(xsdmbayes::cmcc_cm_bio1)
+#'  bio12_ts <- terra::unwrap(xsdmbayes::cmcc_cm_bio12)
 #'  envData <- list(bio1 = bio1_ts)
 #'  ts <- envDataArray(occ, envData)
 #'  run_lc_model_univariate(

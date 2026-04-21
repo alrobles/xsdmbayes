@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param object An xsdm object
+#' @param object An xsdmbayes object
 #' @param index An integer ginving the row index from the sample
 #' of the posterior. Default 1
 #' @param scale Logical. Should be environmental scaled?
@@ -9,8 +9,8 @@
 #' to weight the environmental data provided to predict
 #' @param ... pass arguments
 #' @return A raster map
-#' @method predict xsdm
-#' @aliases predict.xsdm
+#' @method predict xsdmbayes
+#' @aliases predict.xsdmbayes
 #' @export
 #'
 #' @examples
@@ -18,11 +18,11 @@
 #' envData <- list(bio1 = bio1_ts)
 #' pts <- mus_virtualis
 #' if (instantiate::stan_cmdstan_exists()) {
-#' mod <- xsdm(envData, occ = pts, fit = "map" )
+#' mod <- xsdmbayes(envData, occ = pts, fit = "map" )
 #' predict(mod)
 #' }
 
-predict.xsdm <- function(object, index = 1, scale = FALSE, ...){
+predict.xsdmbayes <- function(object, index = 1, scale = FALSE, ...){
   values  <- unclass(object)
   meta <- values$stan_model$metadata()
   match_lp <-  grep(pattern = "^lp", x = meta$model_params)
@@ -43,11 +43,11 @@ predict.xsdm <- function(object, index = 1, scale = FALSE, ...){
       terra::rast()
   } else {
 
-    envM <- xsdm::envDataArray(values$env_data)
+    envM <- xsdmbayes::envDataArray(values$env_data)
 
 
     if(scale == TRUE){
-      env_occ <- xsdm::envDataArray(values$env_data, occ = values$occ)
+      env_occ <- xsdmbayes::envDataArray(values$env_data, occ = values$occ)
       for(i in 1:P){
         envM[ , , i] <- (envM[ , , i] - mean(env_occ[ , , i]))/stats::sd(env_occ[ , , i])
       }

@@ -2,13 +2,13 @@
 % Please edit documentation in R/pointwise_likelihood.R
 \name{pointwise_likelihood}
 \alias{pointwise_likelihood}
-\alias{predict.xsdm}
+\alias{predict.xsdmbayes}
 \title{Title}
 \usage{
-\method{predict}{xsdm}(object, scale = FALSE, ...)
+\method{predict}{xsdmbayes}(object, scale = FALSE, ...)
 }
 \arguments{
-\item{object}{An xsdm object}
+\item{object}{An xsdmbayes object}
 
 \item{scale}{Logical. Should be environmental scaled?
 This function takes the mean and standard deviation of provided ocurrence (presence/absence) points.
@@ -32,8 +32,8 @@ bio12_ts <- terra::unwrap(cmcc_cm_bio12)
 envData <- list(bio1 = bio1_ts, bio12 = bio12_ts)
 pts <- mus_virtualis
 if (instantiate::stan_cmdstan_exists()) {
-mod <- xsdm(envData, occ = pts, fit = TRUE, iter_warmup = 1000, iter_sampling = 1000, parallel_chains = 4, threads_per_chain = 5, recompile = TRUE )
-model_draws <- xsdm:::pointwise_likelihood(mod)
+mod <- xsdmbayes(envData, occ = pts, fit = TRUE, iter_warmup = 1000, iter_sampling = 1000, parallel_chains = 4, threads_per_chain = 5, recompile = TRUE )
+model_draws <- xsdmbayes:::pointwise_likelihood(mod)
 loo::loo(model_draws)
 }
 }

@@ -1,10 +1,10 @@
-#' validate xsdm_object constructed via xsdm_plus function
+#' validate xsdmbayes_object constructed via xsdmbayes_plus function
 #'
-#' @param xsdm_object An xsdm object constructed with new_xsdm function
+#' @param xsdmbayes_object An xsdmbayes object constructed with new_xsdmbayes function
 #'
-#' @return A validated xsdm_object
-validate_xsdm <- function(xsdm_object){
-  values  <- unclass(xsdm_object)
+#' @return A validated xsdmbayes_object
+validate_xsdmbayes <- function(xsdmbayes_object){
+  values  <- unclass(xsdmbayes_object)
   stopifnot(class(values$env_data) == "list")
 
   stopifnot("All elements in env_data should be
@@ -51,5 +51,5 @@ validate_xsdm <- function(xsdm_object){
   #             check_pts_duplicity(values$occ, values$env_data) == FALSE)
 
 
-  xsdm_object
+  xsdmbayes_object
 }

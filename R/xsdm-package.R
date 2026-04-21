@@ -1,4 +1,4 @@
-#' @useDynLib xsdm, .registration=TRUE
+#' @useDynLib xsdmbayes, .registration=TRUE
 #' @importFrom data.table data.table
 #' @importFrom data.table :=
 #' @importFrom data.table .SD

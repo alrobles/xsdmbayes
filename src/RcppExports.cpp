@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // inverse_logit
 NumericMatrix inverse_logit(NumericMatrix input, double param1, double param2);
-RcppExport SEXP _xsdm_inverse_logit(SEXP inputSEXP, SEXP param1SEXP, SEXP param2SEXP) {
+RcppExport SEXP _xsdmbayes_inverse_logit(SEXP inputSEXP, SEXP param1SEXP, SEXP param2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -25,7 +25,7 @@ END_RCPP
 }
 // bernoulli_lpmf
 NumericVector bernoulli_lpmf(NumericVector x, NumericVector y);
-RcppExport SEXP _xsdm_bernoulli_lpmf(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP _xsdmbayes_bernoulli_lpmf(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -37,7 +37,7 @@ END_RCPP
 }
 // meanRow
 NumericMatrix meanRow(NumericMatrix mat);
-RcppExport SEXP _xsdm_meanRow(SEXP matSEXP) {
+RcppExport SEXP _xsdmbayes_meanRow(SEXP matSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -48,7 +48,7 @@ END_RCPP
 }
 // parallelVectorSum
 double parallelVectorSum(NumericVector x);
-RcppExport SEXP _xsdm_parallelVectorSum(SEXP xSEXP) {
+RcppExport SEXP _xsdmbayes_parallelVectorSum(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -59,7 +59,7 @@ END_RCPP
 }
 // response
 NumericMatrix response(NumericMatrix x, double param1, double param2, double param3);
-RcppExport SEXP _xsdm_response(SEXP xSEXP, SEXP param1SEXP, SEXP param2SEXP, SEXP param3SEXP) {
+RcppExport SEXP _xsdmbayes_response(SEXP xSEXP, SEXP param1SEXP, SEXP param2SEXP, SEXP param3SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -73,7 +73,7 @@ END_RCPP
 }
 // response_halfsquare
 NumericMatrix response_halfsquare(NumericMatrix x);
-RcppExport SEXP _xsdm_response_halfsquare(SEXP xSEXP) {
+RcppExport SEXP _xsdmbayes_response_halfsquare(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -84,7 +84,7 @@ END_RCPP
 }
 // response_multi
 NumericMatrix response_multi(NumericMatrix x, NumericVector sigl, NumericVector sigr);
-RcppExport SEXP _xsdm_response_multi(SEXP xSEXP, SEXP siglSEXP, SEXP sigrSEXP) {
+RcppExport SEXP _xsdmbayes_response_multi(SEXP xSEXP, SEXP siglSEXP, SEXP sigrSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -97,17 +97,17 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_xsdm_inverse_logit", (DL_FUNC) &_xsdm_inverse_logit, 3},
-    {"_xsdm_bernoulli_lpmf", (DL_FUNC) &_xsdm_bernoulli_lpmf, 2},
-    {"_xsdm_meanRow", (DL_FUNC) &_xsdm_meanRow, 1},
-    {"_xsdm_parallelVectorSum", (DL_FUNC) &_xsdm_parallelVectorSum, 1},
-    {"_xsdm_response", (DL_FUNC) &_xsdm_response, 4},
-    {"_xsdm_response_halfsquare", (DL_FUNC) &_xsdm_response_halfsquare, 1},
-    {"_xsdm_response_multi", (DL_FUNC) &_xsdm_response_multi, 3},
+    {"_xsdmbayes_inverse_logit", (DL_FUNC) &_xsdmbayes_inverse_logit, 3},
+    {"_xsdmbayes_bernoulli_lpmf", (DL_FUNC) &_xsdmbayes_bernoulli_lpmf, 2},
+    {"_xsdmbayes_meanRow", (DL_FUNC) &_xsdmbayes_meanRow, 1},
+    {"_xsdmbayes_parallelVectorSum", (DL_FUNC) &_xsdmbayes_parallelVectorSum, 1},
+    {"_xsdmbayes_response", (DL_FUNC) &_xsdmbayes_response, 4},
+    {"_xsdmbayes_response_halfsquare", (DL_FUNC) &_xsdmbayes_response_halfsquare, 1},
+    {"_xsdmbayes_response_multi", (DL_FUNC) &_xsdmbayes_response_multi, 3},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_xsdm(DllInfo *dll) {
+RcppExport void R_init_xsdmbayes(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

@@ -1,17 +1,17 @@
-#' Get loo from xsdm model
+#' Get loo from xsdmbayes model
 #'
-#' @param xsdm_object an xsdm object created with constuctor and validated
+#' @param xsdmbayes_object an xsdmbayes object created with constuctor and validated
 #' @param index An integer ginving the row index from the sample
 #' @param ... argument passed to stan model sampling
 #'
-#' @return a fitted xsdm object
+#' @return a fitted xsdmbayes object
 #'
-loo <- function(xsdm_object, index = 1,...){
-  values  <- unclass(xsdm_object)
+loo <- function(xsdmbayes_object, index = 1,...){
+  values  <- unclass(xsdmbayes_object)
   ts <- envDataArray(occ = values$occ,
                      values$env_data)
 
-  values  <- unclass(xsdm_object)
+  values  <- unclass(xsdmbayes_object)
   meta <- values$stan_model$metadata()
   match_lp <-  grep(pattern = "^lp", x = meta$model_params)
   params <- meta$model_params[-match_lp]

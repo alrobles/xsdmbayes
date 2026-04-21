@@ -1,11 +1,11 @@
-#' Constructor function for the class xsdm
+#' Constructor function for the class xsdmbayes
 #'
 #' @param env_data A (prefered named) list with environmental
 #' raster time series.
 #' @param occ A data.frame
 #' @param stan_model A stan fitted object slot. Default is NULL
 #' @param call Call this function
-new_xsdm <- function(env_data = list(),
+new_xsdmbayes <- function(env_data = list(),
                      occ = data.frame(),
                      #model_spec = list(),
                      stan_model = NULL,
@@ -18,7 +18,7 @@ new_xsdm <- function(env_data = list(),
     names(x = envData) <- paste0("e", 1:length(env_data))
   }
 
-  xsdm <- structure(
+  xsdmbayes <- structure(
     list(
       env_data = env_data,
       occ = occ,
@@ -27,7 +27,7 @@ new_xsdm <- function(env_data = list(),
       samplig_data = NULL,
       sampling_result = NULL,
       call = call),
-    class = "xsdm"
+    class = "xsdmbayes"
   )
-  return(xsdm)
+  return(xsdmbayes)
 }
